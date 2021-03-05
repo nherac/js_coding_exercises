@@ -69,7 +69,8 @@ describe("getTotalSubjects", () => {
       { name: "Claude", subjects: ["chemistry", "biology", "music"] },
       { name: "Aneeta", subjects: ["physics", "maths", "computing", "music"] }
     ];
-    expect(getTotalSubjects(people)).toBe(9);
+    //expect(getTotalSubjects(people)).toBe(9);
+    expect(getTotalSubjects(people)).toBe(8);
   });
 });
 
