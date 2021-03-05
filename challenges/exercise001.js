@@ -1,7 +1,7 @@
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
-  result = word;
+  var result = word;
   var firstLetter = word.charAt(0);
   var pattern = new RegExp("[a-z]");
   if(pattern.test(firstLetter)){
