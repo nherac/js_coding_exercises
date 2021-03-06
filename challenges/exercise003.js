@@ -35,10 +35,7 @@ function getTotalSubjects(people) {
     var subjectsArray = people[i].subjects;
     for(var j=0;j<subjectsArray.length;j++){
       var peekedSubject = subjectsArray[j];
-      console.log("peeking" + peekedSubject);
-      console.log("is the subject included "+ setOfSubjects.includes(peekedSubject));
       if(!setOfSubjects.includes(peekedSubject)){
-        console.log("adding" + peekedSubject);
         setOfSubjects.push(peekedSubject);
       }
     }
@@ -50,12 +47,12 @@ function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   var isIngredientsInMenu = false;
-  var i =0;
+  var i = 0;
   var notFound = true;
   var keepChecking = ((i<menu.length) && (notFound));
   while(keepChecking){
-    var isIngredientInMenu= menu[i].ingredients.includes(ingredient);
-    notFound =!isIngredientInMenu;
+    isIngredientsInMenu = menu[i].ingredients.includes(ingredient);
+    notFound = (!isIngredientsInMenu);
     i=i+1;
     keepChecking = (i<menu.length) && notFound;
   }
@@ -65,11 +62,31 @@ function checkIngredients(menu, ingredient) {
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  var setFromArray2 =new Set(arr2);
-  const intersection = new Set(arr1).filter(x=>setFromArray2.has(x));
-  return intersection;
+  var longArray = longerArray(arr1,arr2);
+  var shortArray = shorterArray(arr1,arr2);
+  var intersection = [];
+  for(var i=0;i<shortArray.length;i++){
+    var cheekedNumber = shortArray[i];
+    if(longArray.includes(cheekedNumber)){
+      intersection.push(cheekedNumber);
+    }
+  }
+  return intersection.sort();
 }
 
+function shorterArray(arrayA,arrayB){
+  if(arrayA.length<=arrayB.length)
+    return arrayA;
+  else
+    return arrayB;
+}
+
+function longerArray(arrayA, arrayB){
+  if(arrayA.length>=arrayB.length)
+    return arrayA;
+  else
+    return arrayB;
+}
 module.exports = {
   getSquares,
   camelCaseWords,
