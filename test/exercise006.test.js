@@ -29,7 +29,7 @@ const {
     });
 
     test("if the array only contains multiple of 3", () => {
-        expect(sumMultiples(3).toBe(3));
+        expect(sumMultiples([3]).toBe(3));
         expect(sumMultiples([3,6,12])).toBe(21);
 
     });
