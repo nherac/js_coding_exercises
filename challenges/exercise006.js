@@ -1,3 +1,5 @@
+const { TestScheduler } = require("@jest/core");
+
 /**
  * This function will receive an array of numbers and should return the sum
  * of any numbers which are a multiple of 3 or 5
@@ -6,7 +8,15 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  
+  return arr.filter(num => num%3==0 || num%5 == 0).reduce((acc,num)=> acc + num,0); 
+  
 };
+/*
+const multipleOfThree  =  number => number % 3 == 0;
+const multipleOfFive = number => number % 5 == 0;
+const or = (...conditions) => (...args) => conditions.reduce((a,b)=>a||b(...args),false);
+*/
 
 /**
  * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
