@@ -3,7 +3,7 @@ function capitalize(word) {
   // Add your code here!
   var result = word;
   var firstLetter = word.charAt(0);
-  var pattern = new RegExp("[a-z]");
+  var pattern = /[a-z]/;
   if(pattern.test(firstLetter)){
     result = firstLetter.toUpperCase() + word.slice(1);
   }
@@ -46,25 +46,19 @@ function customizeRound(value, places) {
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   var result = str;
-  console.log("the string is "+ result);
   
   if (str.length>1){
 
     var middleIndex = str.length/2;
 
     if(isEvenString(str)){
-      console.log("I am in even");
-      console.log(middleIndex);
       var theTwoCharactersInTheMiddle = str.substring(middleIndex-1,middleIndex+1);
-      console.log("this is the carac in the middle");
-      console.log(theTwoCharactersInTheMiddle);
       result= theTwoCharactersInTheMiddle;
     }
 
     var isOddString = !isEvenString(str);
 
     if(isOddString){
-      console.log("is odd string")
       var theCharacterInTheMiddle = str.charAt(middleIndex);
       result=  theCharacterInTheMiddle;
     }
