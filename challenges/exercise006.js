@@ -8,11 +8,13 @@ const { TestScheduler } = require("@jest/core");
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  
+
   return arr.filter(num => num%3==0 || num%5 == 0).reduce((acc,num)=> acc + num,0); 
   
 };
+
 /*
+Pending try to replicate the Java 8 functionalite of predicate.andThen()
 const multipleOfThree  =  number => number % 3 == 0;
 const multipleOfFive = number => number % 5 == 0;
 const or = (...conditions) => (...args) => conditions.reduce((a,b)=>a||b(...args),false);
