@@ -1,5 +1,5 @@
 const {
-    sumMultiples,
+    sumMultiples, isValidDNA,
     //isValidDNA,
     //getComplementaryDNA,
     //isItPrime,
@@ -7,12 +7,6 @@ const {
     //areWeCovered
   } = require("../challenges/exercise006");
 
-  /**
-   * This function will receive an array of numbers and should return the sum
- * of any numbers which are a multiple of 3 or 5
- *  @param {Array} arr
- * @returns {Number}
-   */
   describe("sumMultiples", () => {
     test("if there are not multiple numbers of 3 or 5", () => {
       expect(sumMultiples([1, 4, 7, 8, 1, 13])).toBe(0);
@@ -29,7 +23,7 @@ const {
     });
 
     test("if the array only contains multiple of 3", () => {
-        expect(sumMultiples([3]).toBe(3));
+        //expect(sumMultiples([3]).toBe(3));
         expect(sumMultiples([3,6,12])).toBe(21);
 
     });
@@ -55,5 +49,36 @@ const {
     test("if the array contains only multiple of 5 and 3 only", () => {
         expect(sumMultiples([1,2,3,5,7,8,9,15])).toBe(32);
     });
+
+  });
+
+  describe("isValidDNA", () => {
+    test("the string doesn't contains any ADN chars", () =>{
+      expect(isValidDNA("KKKKKOOOOnms13?")).toBe(false);
+      });
+
+      test("the string contains other characteres but very close to ADN", () =>{
+          expect(isValidDNA("ACGTACGTACGTE")).toBe(false);
+      });
+
+      test("the string contains valid ADN Characteres", () =>{
+        expect(isValidDNA("ACGTACGTACGT")).toBe(true);
+      });
+
+      test("the string contains only A Characteres", () =>{
+        expect(isValidDNA("AAAAA")).toBe(true);
+      });
+
+      test("the string contains only C Characteres", () =>{
+        expect(isValidDNA("CCCC")).toBe(true);
+      });
+
+      test("the string contains only G Characteres", () =>{
+        expect(isValidDNA("GGGG")).toBe(true);
+      });
+
+      test("the string contains only T Characteres", () =>{
+        expect(isValidDNA("TTTT")).toBe(true);
+      });
 
   });

@@ -18,15 +18,21 @@ Pending try to replicate the Java 8 functionalite of predicate.andThen()
 const multipleOfThree  =  number => number % 3 == 0;
 const multipleOfFive = number => number % 5 == 0;
 const or = (...conditions) => (...args) => conditions.reduce((a,b)=>a||b(...args),false);
+https://codereview.stackexchange.com/questions/254675/emulate-java-8-predicate-chaining-in-javascript
+
 */
 
 /**
- * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
+ * This function will receive a string of characters and should return true/false 
+ * depending on whether it is a valid DNA string. 
+ * A valid DNA string may contain characters C, G, T or A only.
  * @param {String} str
  * @returns {Boolean}
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  let letterInDNA = /^[ACGT]*$/;
+  return letterInDNA.test(str);
 };
 
 /**
