@@ -36,16 +36,36 @@ const isValidDNA = str => {
 };
 
 /**
- * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
+ * This function will receive a valid DNA string (see above) 
+ * and should return a string of the complementary base pairs. 
+ * In DNA, T always pairs with A, and C always pairs with G. 
+ * So a string of "ACTG" would have a complementary DNA string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  let result = str.split("")
+                  .map(letter =>translateToComplementari(letter))
+                  .join("");
+  return result;
+};
+
+const translateToComplementari = str => {
+  switch(str){
+    case "A":return "T";
+    case "C":return "G";
+    case "G":return "C";
+    case "T":return "A";
+  }
+
 };
 
 /**
- * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
+ * This function should receive a number and 
+ * return true/false depending on whether it is a prime number or not.
+ * A prime number is a number that can only be divided 
+ * evenly by 1 and itself (for example, 7)
  * @param {Number} n
  * @returns {Boolean}
  */
@@ -54,7 +74,9 @@ const isItPrime = n => {
 };
 
 /**
- * This function should receive a number and return an array of n arrays, each filled with n items. The parameter "fill" should be used as the filler of the arrays. For example, given parameters 3 and "foo" the resulting matrix should be:
+ * This function should receive a number and
+ * return an array of n arrays, each filled
+ * with n items. The parameter "fill" should be used as the filler of the arrays. For example, given parameters 3 and "foo" the resulting matrix should be:
  * [
  *   ["foo", "foo", "foo"],
  *   ["foo", "foo", "foo"],

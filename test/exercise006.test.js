@@ -1,7 +1,7 @@
 const {
-    sumMultiples, isValidDNA,
-    //isValidDNA,
-    //getComplementaryDNA,
+    sumMultiples, 
+    isValidDNA,
+    getComplementaryDNA,
     //isItPrime,
     //createMatrix,
     //areWeCovered
@@ -82,3 +82,41 @@ const {
       });
 
   });
+
+  describe("getComplementaryDNA", () =>{
+
+    test("Test1", () => {
+      expect(getComplementaryDNA("ACTG")).toBe("TGAC");
+    });
+    
+    test("A will transform in T", () => {
+      expect(getComplementaryDNA("A")).toBe("T");
+    });
+
+    test("C will transform in G", () => {
+      expect(getComplementaryDNA("C")).toBe("G");
+    });
+
+    test("mixing A and C", () => {
+      expect(getComplementaryDNA("AC")).toBe("TG");
+    });
+
+    test("long ADN string ", () => {
+      expect(getComplementaryDNA("AC")).toBe("TG");
+    });
+
+    
+
+
+  });
+
+  /*
+   describe("FunctionName", () =>{
+     test("Info to show in console", () =>{
+        expect(FunctionName(Parameters here)).toBe(Expected result);
+      });
+   
+    
+
+  });
+   */
