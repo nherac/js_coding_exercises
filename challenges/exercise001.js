@@ -73,53 +73,31 @@ function isEvenString(str){
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  var result = "";
-  var lastIndex = word.length-1;
-  var FIRST_INDEX=0;
-  for(var i = lastIndex;i>=FIRST_INDEX;i--){
-    result = result + word[i];
-  }
+  let result = word.split("").reverse().join("");
   return result;
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   //if (!words.isArray()) throw new Error("words is not an array");
-  var lastIndex = words.length-1;
-  var FIRST_INDEX=0;
-  var result =[];
-  for(var i=FIRST_INDEX;i<=lastIndex;i++){
-    var newWord =reverseWord( words[i]);
-    result.push(newWord);
-  }
+
+  let result = words.map(w => reverseWord(w));
   return result;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  //if (!users.isArray()) throw new Error("Users is not an array");
   var numberOfLinuxUsers = 0;
-  var lastIndex = users.length-1;
-  var FIRST_INDEX=0;
-  for(var i=FIRST_INDEX;i<=lastIndex;i++){
-    if(users[i].type=="Linux"){
-      numberOfLinuxUsers++;
-    }
-
-  }
+  numberOfLinuxUsers = users.filter(u => u.type === "Linux").length;
   return numberOfLinuxUsers;
 
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  var lastIndex = scores.length-1;
-  var FIRST_INDEX=0;
-  var sum = 0;
-  for(var i = FIRST_INDEX; i<=lastIndex;i++){
-    sum = sum + scores[i];
-  }
-  var result = customizeRound(sum/scores.length,2);
+  let sum = 0;
+  sum = scores.reduce((acc,score)=> acc + score,0);
+  let result  = sum>0?customizeRound(sum/scores.length,2):0;
   return result;
 }
 
