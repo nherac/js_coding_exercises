@@ -108,9 +108,9 @@ const {
   });
 
   describe("isItPrime", () =>{
-      test("Number -5 should throw an error", () => {expect(isItPrime(-5)).toThrow("Prime numbers starts at 2");});
+    test("Number -5 should throw an error", () => {expect(function (){isItPrime(-5);}).toThrow();});
 
-      test("Number 1 should throw an error", () => {expect(isItPrime(1)).toThrow("Prime numbers starts at 2");});
+    test("Number 1 should throw an error", () => {expect(function (){isItPrime(1);}).toThrow(new Error("Prime numbers starts at 2"));});
 
     test("Number 2 is true", () => {expect(isItPrime(2)).toBe(true);});
 
