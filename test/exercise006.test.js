@@ -2,9 +2,9 @@ const {
     sumMultiples, 
     isValidDNA,
     getComplementaryDNA,
-    //isItPrime,
-    //createMatrix,
-    //areWeCovered
+    isItPrime,
+    createMatrix,
+    areWeCovered
   } = require("../challenges/exercise006");
 
   describe("sumMultiples", () => {
@@ -105,18 +105,28 @@ const {
       expect(getComplementaryDNA("AC")).toBe("TG");
     });
 
-    
+  });
+
+  describe("isItPrime", () =>{
+      test("Number -5 should throw an error", () => {expect(isItPrime(-5)).toThrow("Prime numbers starts at 2");});
+
+      test("Number 1 should throw an error", () => {expect(isItPrime(1)).toThrow("Prime numbers starts at 2");});
+
+    test("Number 2 is true", () => {expect(isItPrime(2)).toBe(true);});
+
+    test("Number 3 is true", () => {expect(isItPrime(3)).toBe(true);});
+
+    test("Number 4 is false", () => {expect(isItPrime(4)).toBe(false);});
+
+    test("Number 5 is true", () => {expect(isItPrime(5)).toBe(true);});
+
+    test("Number 6 is false", () => {expect(isItPrime(6)).toBe(false);});
+
+    test("Number 7 is true", () => {expect(isItPrime(7)).toBe(true);});
+
+    test("Number 8 is false", () => {expect(isItPrime(8)).toBe(false);});
 
 
   });
 
-  /*
-   describe("FunctionName", () =>{
-     test("Info to show in console", () =>{
-        expect(FunctionName(Parameters here)).toBe(Expected result);
-      });
-   
-    
-
-  });
-   */
+ 

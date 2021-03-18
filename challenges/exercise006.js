@@ -69,8 +69,32 @@ const translateToComplementari = str => {
  * @param {Number} n
  * @returns {Boolean}
  */
+
+
+
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if (n <= 1) throw new Error ("Prime numbers starts at 2");
+  if(!isItPrime.previousAnswersCache){
+    isItPrime.previousAnswersCache = {}
+  }
+  let theCheckedNumberIsInTheCache = isItPrime.previousAnswersCache[n]!== undefined;
+  if(theCheckedNumberIsInTheCache){
+    return isItPrime.previousAnswersCache[n];
+  }
+  let result =( n !== 0 && n !== 1);
+
+  for(let i = 2; i<= lowerLimit(n); i++){
+    if(n % i === 0){
+      result = false;
+      break;
+    }
+  }
+  return  isItPrime.previousAnswersCache[n] = result;
+};
+
+const lowerLimit = n  => {
+  return Math.floor(Math.sqrt(n));
 };
 
 /**
