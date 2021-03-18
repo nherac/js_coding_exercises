@@ -82,15 +82,14 @@ const isItPrime = n => {
   if(theCheckedNumberIsInTheCache){
     return isItPrime.previousAnswersCache[n];
   }
-  let result =( n !== 0 && n !== 1);
-
+  let yesThisNumberIsPrime = true;
   for(let i = 2; i<= lowerLimit(n); i++){
     if(n % i === 0){
-      result = false;
+      yesThisNumberIsPrime = false;
       break;
     }
   }
-  return  isItPrime.previousAnswersCache[n] = result;
+  return  isItPrime.previousAnswersCache[n] = yesThisNumberIsPrime;
 };
 
 const lowerLimit = n  => {
