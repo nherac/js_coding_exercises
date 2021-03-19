@@ -129,6 +129,22 @@ const {
 
   });
 
+  var exampleMatrix = [
+                        ["foo", "foo", "foo"],
+                        ["foo", "foo", "foo"],
+                        ["foo", "foo", "foo"]
+                      ];
+
+  describe("createMatrix", () =>{
+    test("Create a matrix 3 x 3", () =>{
+       expect(createMatrix(3, "foo")).toStrictEqual(exampleMatrix);
+     });
+  
+   
+
+ });
+
+
 
 
  

@@ -112,7 +112,13 @@ const lowerLimit = n  => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  let row = Array(n).fill(fill);
+  let matrix = Array(n).fill(row);
+  return matrix;
+
 };
+
+
 
 /**
  * This function takes an array of staff objects in the format:
