@@ -142,17 +142,12 @@ const areWeCovered = (staff, day) => {
   let counter = 0;
   let MINIMUM_STAFF_REQUIRED = 3;
   
-  for( let workerInfo of staff){
-    for(let dayToGoWork of workerInfo.rota){
-      if (dayToGoWork === day){
-        counter++;
-      }
-      if(counter === MINIMUM_STAFF_REQUIRED)
-        break;
-    }
-  }
-  let answer = (counter === MINIMUM_STAFF_REQUIRED)
-  return answer ;
+  return staff.some(worker => {
+                            if(worker.rota.includes(day))
+                              counter ++;
+                            return (counter === MINIMUM_STAFF_REQUIRED);
+                             
+                            });
 };
 
 module.exports = {
