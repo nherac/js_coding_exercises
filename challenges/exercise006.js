@@ -124,8 +124,12 @@ const createMatrix = (n, fill) => {
  * This function takes an array of staff objects in the format:
  * [
  *  { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
- *  { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
- *  ...etc
+ *  { name: "Pedro", rota: ["Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
+ *  { name: "Annai", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+ *  { name: "03Emp", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+ *  { name: "04Emp", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+ *  { name: "05Emp", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+ * 
  * ]
  * and a day of the week. For the café to run successfully, at least 3 staff members are required per day. The function should return true/false depending on whether there are enough staff scheduled for the given day.
  * @param {Array} staff
@@ -135,6 +139,22 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  let counter = 0;
+  let MINIMUM_STAFF_REQUIRED = 3;
+  for(let workerInfo in staff ){
+    workerInfo.rota.every( dayInRota => {  
+                                          if(dayInRota.equals(day)){
+                                            counter ++;
+                                          } 
+                                          if(counter ===3){
+                                            return false;
+                                          }
+                                          return true;
+                                       });
+  }
+
+  let answer = (counter === MINIMUM_STAFF_REQUIRED)
+  return answer ;
 };
 
 module.exports = {

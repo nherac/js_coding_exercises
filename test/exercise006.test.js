@@ -144,6 +144,28 @@ const {
 
  });
 
+var sampleRota = [
+    { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+    { name: "Pedro", rota: ["Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
+    { name: "Annai", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "03Emp", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "04Emp", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "05Emp", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+
+  ];
+
+  describe("areWeCovered", () =>{
+    test("there are 3 member", () =>{
+       expect(areWeCovered(sampleRota,"Tuesday")).toBe(true);
+     });
+
+     test("Not enough people for that day", () =>{
+      expect(areWeCovered(sampleRota,"Friday")).toBe(false);
+    });
+
+ });
+
+
 
 
 
