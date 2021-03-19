@@ -1,9 +1,16 @@
+
 /**
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
  * @param {Number} n
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  let sum = 0;
+  while(n/10 > 0){
+    sum = sum + Math.floor(n % 10);
+    n = Math.floor(n / 10);
+  }
+  return sum;
 };
 
 /**
@@ -17,6 +24,15 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  let result = [];
+  if (step === undefined)
+    step = 1;
+    
+  for(let i = start; i<= end; i = i + step){
+    result.push(i);
+  }
+  return result; 
+  
 };
 
 /**
