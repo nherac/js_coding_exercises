@@ -27,7 +27,7 @@ const createRange = (start, end, step) => {
   let result = [];
   if (step === undefined)
     step = 1;
-    
+
   for(let i = start; i<= end; i = i + step){
     result.push(i);
   }
@@ -67,6 +67,33 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  let result = [];
+  let LIMIT_IN_MINUTES = 100;
+  users.forEach(u => {
+                      if(getScreenTimeIndividualUser(u.screenTime) >= LIMIT_IN_MINUTES)
+                        result.push(u.username);
+
+                     });
+
+  return result;
+
+};
+
+const getScreenTimeIndividualUser = screenTimeArray => {
+  let totalMinutesAllDates = 0;
+  for(let dayInfo in screenTimeArray){
+    totalMinutesAllDates = getScreenDayTime (dayInfo) + totalMinutesAllDates;
+  }
+  return totalMinutesAllDates;
+
+};
+
+const getScreenDayTime = usageInMinutes => {
+  let totalMinutes = 0;
+  for(let minutesInThatApp in usageInMinutes){
+    totalMinutes = totalMinutes + minutesInThatApp;
+  }
+  return totalMinutes;
 };
 
 /**
