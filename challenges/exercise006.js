@@ -141,18 +141,16 @@ const areWeCovered = (staff, day) => {
   if (day === undefined) throw new Error("day is required");
   let counter = 0;
   let MINIMUM_STAFF_REQUIRED = 3;
-  for(let workerInfo in staff ){
-    workerInfo.rota.every( dayInRota => {  
-                                          if(dayInRota.equals(day)){
-                                            counter ++;
-                                          } 
-                                          if(counter ===3){
-                                            return false;
-                                          }
-                                          return true;
-                                       });
+  
+  for( let workerInfo of staff){
+    for(let dayToGoWork of workerInfo.rota){
+      if (dayToGoWork === day){
+        counter++;
+      }
+      if(counter === MINIMUM_STAFF_REQUIRED)
+        break;
+    }
   }
-
   let answer = (counter === MINIMUM_STAFF_REQUIRED)
   return answer ;
 };
