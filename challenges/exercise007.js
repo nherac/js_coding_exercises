@@ -110,9 +110,27 @@ const getScreentimeAlertListSingle = (user, date) =>{
  * Hint: You will need to convert each hexadecimal value for R, G and B into its decimal equivalent!
  * @param {String} str
  */
+
 const hexToRGB = hexStr => {
-  if (hexStr === undefined) throw new Error("hexStr is required");
+ 
+  if (hexStr === undefined) throw new Error("hexStr is required"); 
+  let len = hexStr.length;
+  if(len!=7) throw new Error ("invalid lenght")
+  let firstChar = hexStr.charAt(0);
+  if(firstChar!="#") throw new Error("it is not a valid hex value, it should start with #. This string is starting with " + firstChar);
+  let result = [];
+  for(let i=1;i<7;i=i+2){
+    let colorHex = hexStr.slice(i,i+2);
+    let colorInDecimal = parseInt(colorHex, 16);
+    result.push(colorInDecimal);
+  }
+  let red = result[0];
+  let green = result[1];
+  let blue = result[2];
+  let formaterAnswer = "rgb(" + red + "," + green +"," + blue + ")";
+  return formaterAnswer ;
 };
+
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.

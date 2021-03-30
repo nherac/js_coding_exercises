@@ -69,7 +69,6 @@ const findNeedle = (haystack, searchTerm) => {
       var propToLowerCase = contentInProp.toLowerCase();
       var containsSearchTerm = propToLowerCase.includes(searchTermLowerCase);
       if(containsSearchTerm){
-        console.log(containsSearchTerm);
         var foundNeedle = true;
         return foundNeedle;
       }

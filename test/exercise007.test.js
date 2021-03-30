@@ -62,8 +62,8 @@ const {
                   { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
                   { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
                   ]
-     },
-	 {
+    },
+	{
       username: "Third_User",
       name: "Third User",
       screenTime: [
@@ -85,6 +85,40 @@ const {
       expect(getScreentimeAlertList(sampleForGetScreenTimeAlertList2, "2019-05-04")).toStrictEqual(["beth_1234", "Third_User"]);
     });
  });
+
+
+ describe("hexToRGB", () =>{
+  test.only("Info to show in console", () =>{
+     expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+ 
+   });
+ 
+ test("Info to show in console", () =>{
+     expect(hexToRGB("#221155")).toStrictEqual("rgb(34,17,85)");
+   });
+ 
+ test("Info to show in console", () =>{
+     expect(hexToRGB("#000000")).toStrictEqual("rgb(0,0,0)");
+   });
+ 
+ test("Info to show in console", () =>{
+     expect(hexToRGB("#010101")).toStrictEqual("rgb(1,1,1)");
+   });
+ 
+ test("Info to show in console", () =>{
+     expect(hexToRGB("#FFFFFF")).toStrictEqual("rgb(255,255,255)");
+   });
+ 
+ test("Info to show in console", () =>{
+     expect(hexToRGB("#0F0F0F")).toStrictEqual("rgb(15,15,15)");
+   });
+ 
+ test("Info to show in console", () =>{
+     expect(hexToRGB("#F0F0F0")).toStrictEqual("rgb(240,240,240)");
+   });
+  
+
+});
 
 
 
