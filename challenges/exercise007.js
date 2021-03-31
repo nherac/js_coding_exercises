@@ -10,6 +10,7 @@ const sumDigits = n => {
     sum = sum + Math.floor(n % 10);
     n = Math.floor(n / 10);
   }
+  //To-do: pending to refactor using generator https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function* and remove the While loop
   return sum;
 };
 
@@ -114,10 +115,8 @@ const getScreentimeAlertListSingle = (user, date) =>{
 const hexToRGB = hexStr => {
  
   if (hexStr === undefined) throw new Error("hexStr is required"); 
-  let len = hexStr.length;
-  if(len!=7) throw new Error ("invalid lenght")
-  let firstChar = hexStr.charAt(0);
-  if(firstChar!="#") throw new Error("it is not a valid hex value, it should start with #. This string is starting with " + firstChar);
+  let hexCorrectFormat = /#([a-fA-F0-9]{6})/;
+  if (!hexCorrectFormat.test(hexStr)) throw new Error ("hexStr doesn't follow the hexadecimal color format");
   let result = [];
   for(let i=1;i<7;i=i+2){
     let colorHex = hexStr.slice(i,i+2);
