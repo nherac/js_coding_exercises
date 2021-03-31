@@ -120,21 +120,35 @@ const {
 
 });
 
+var boardSample1 = [
+  [null, null, null],
+  ["X", "X", "X"],
+  ["0", "0", "0"]
+ ];
+
+var boardSample2 = [
+  ["X", "0", null],
+  ["X", null, "0"],
+  ["X", null, "0"]
+ ];
+
+var boardSample3 = [
+  ["0", "X", null],
+  ["0", null, "X"],
+  ["0", null, "X"]
+ ];
+
+
+
+
+test("Info to show in console", () => {
+  expect(findWinner(boardSample1)).toBe(null);
+});
 
 
 
 
 
- /*
-   describe("FunctionName", () =>{
-     test("Info to show in console", () =>{
-        expect(FunctionName(Parameters here)).toBe(Expected result);
-      });
-   
-    
-
-  });
-   */
 
 
 

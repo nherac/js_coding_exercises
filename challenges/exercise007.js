@@ -142,8 +142,54 @@ const hexToRGB = hexStr => {
  * @param {Array} board
  */
 const findWinner = board => {
-  if (board === undefined) throw new Error("board is required");
+  let xPosition = [];
+  let zerosPosition = [];
+  let nullPositions = [];
+
+  for(let i = 0;i<board.length;i++){
+    for(let j=0;j<board[i].length;j++){
+      let readValue = board[i][j];
+      switch(readValue){
+        case "X": xPosition.push(i+j);break;
+        case "0": zerosPosition.push(i+j);break;
+        case null: nullPositions.push(i+j);break;
+        default: throw new Error ("Invalid value in matrix");
+      }      
+    }
+  }
+  if((zerosPosition.length!=3)||(xPosition.length!=3))
+    throw new Error ("One of the players hasn't introduce all informatio");
+  
+  let xIsWinner = isWinnerHelper(xPosition);
+  let zerosIsWinner = isWinnerHelper(zerosPosition);
+  let tie = (xIsWinner && zerosIsWinner) || (!xIsWinner&&!zerosIsWinner);
+  if(tie)
+    return null;
+  if(xIsWinner)
+    return "X";
+  if(zerosIsWinner)
+    return "0";
+ 
+
 };
+
+const isWinnerHelper = info =>{
+  return(isColumn(info) ||(isRow(info)||isDiagonal(info)));
+}
+
+const isRow = positions =>{
+  return true;
+}
+
+const isColumn = positions =>{
+  return true;
+}
+
+const isDiagonal = positions =>{
+  return true;
+}
+
+
 
 module.exports = {
   sumDigits,
